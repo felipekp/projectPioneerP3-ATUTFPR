@@ -1,0 +1,51 @@
+A equipe acredita que todos os objetivos da disciplina foram cumpridos, desde a comunicação sem fio, como o trabalho com \textit{hardware} e \textit{software}. Tivemos resultados favoráveis e todas as melhorias realizadas e documentadas irão auxiliar ao longo do desenvolvimento do projeto nos semestres que seguem, considerando que este trabalho foi uma extensão da iniciação científica de um dos integrantes, sentimos que o aspecto de proporcionar vias de melhorias futuras é muito interessante, além da documentação presente aqui para possível compartilhamento com a comunidade.
+
+Um dos focos do grupo foi a abordagem de como as limitações dos sensores utilizados, principalmente do Kinect, podem ser superadas de maneiras menos custosas, buscando sempre uma relação custo-benefício alta. Podemos perceber isso analisando o custo dos equipamentos presentes no ínicio do projeto e o custo de nossas melhorias, disponibilizados na Tabela \ref{tab:custoAnterior} e o custo envolvido no aprimoramento deste sistema está na Tabela \ref{tab:custoNosso}.
+
+
+\begin{table}[h]
+\caption{\small{Custo dos equipamentos já presentes no projeto.}}
+\begin{center}
+\begin{tabular}{c|c}
+\hline
+Descrição & Valor em reais \\
+\hline
+Kinect & 300,00 \\ 
+Controle de Wii e adaptador \textit{bluetooth} & 100,00 \\  
+Robô Pioneer 3-AT & 18.000,00 \\ 
+\textit{Netbook} & 700,00 \\
+Arduino Mega 2560 & 90,00 \\
+\hline
+Total & 19.190,00 \\
+\hline
+\end{tabular}
+\end{center}
+\label{tab:custoAnterior}
+\end{table}
+
+\begin{table}[h]
+\caption{\small{Custo para o aprimoramento.}}
+\begin{center}
+\begin{tabular}{c|c}
+\hline
+Descrição & Valor em reais \\
+\hline
+Materiais para a nova placa do Arduino & 10,00 \\ 
+Servo motor MG996R & 55,00 \\  
+Estrutura para o Kinect & 15,00 \\ 
+\textit{Hub} USB 2.0 & 10,00 \\
+\hline
+Total & 80,00 \\
+\hline
+\end{tabular}
+\end{center}
+\label{tab:custoNosso}
+\end{table}
+
+Ao compararmos o custo total de equipamentos que já estavam presentes no projeto ($19.190,00$ reais) e o custo total para o aprimoramento ($80,00$ reais) percebemos como o pequeno investimento monetário tornou possível adicionar as funções de: teleoperação com um Wiimote do robô e da posição da câmera do Kinect, mapeamento 3D, assim como melhorias na navegação autônoma. 
+
+Desta forma, acreditamos que o trabalho realizado apresenta muitas opções para o futuro do projeto como um todo, algo muito vantajoso quando se pensa na natureza de melhoria contínua do mesmo. Acreditamos que com a descoberta de pacotes como o \verb|ira_laser_tools| e a utilização de um computador com melhores configurações é possível gerar resultados ainda melhores.
+
+Outrossim, por mais que ainda existam inconvenientes na navegação autônoma, como falta de repetibilidade, ou até mesmo erros de má localização, houve melhoras signficativas neste projeto (seção \ref{sec:result:slam}). A visualização 3D do ambiente foi possível, mas ainda pode apresentar erro quando um mesmo objeto é mapeado duas vezes em tempos diferentes, pois por conta do erro da odometria a referência para gerar os dados muda.
+
+Buscamos também, que todo o desenvolvimento aqui documentado permita um desenvolvimento aguçado nos próximos semestres, tornando a compreensão de configurações, pacotes, \textit{plugins} e sensores facilitada. As limitações e dificuldades citadas ao longo deste documento buscam motivar melhorias futuras e tornar a navegação autônoma e a visualização 3D ainda mais eficiente. Esperamos que o trabalho contribua para o desenvolvimento de uma excelência em robótica na nossa universidade. Por fim, o cronograma foi cumprido e os objetivos propostos alcalçados, conforme demonstraram os testes de navegação realizados com o robô em um ambiente interno.

@@ -1,0 +1,5 @@
+Os dados obtidos dos sensores em testes de posicionamento e movimentação foram condizentes com a realidade, no entanto não foram realizados testes para determinar a precisão dos sensores. Todos os dados são publicados em tópicos do \textit{framework} ROS e estão disponíveis para qualquer programa que o utilize.
+
+O acelerômetro e o giroscópio são publicados no tópico do tipo TWIST (tipo de mensagem usada pelo ROS). Este tipo de mensagem é específico para a transmissão de informações a respeito da velocidade linear e angular de um objeto. Seus dados podem ser facilmente verificados fazendo uso de uma ferramenta do ROS, chamada de \textit{rostopic}, sendo necessário apenas solicitar o comando: \verb|\$ rostopic echo /nome_do_topico|.
+
+O sonar é publicado em um tópico do tipo \textit{float}. Seus dados foram inicialmente usados para mitigar a limitação de alcance do Kinect, que só consegue perceber objetos a partir de aproximadamente $80cm$. Entretanto, o custo computacional de mesclar os dados do sonar com os do Kinect foram superiores ao esperado, tornando sua utilização pouco efetiva no SLAM.

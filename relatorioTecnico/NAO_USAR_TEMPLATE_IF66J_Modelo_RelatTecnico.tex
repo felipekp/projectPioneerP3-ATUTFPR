@@ -1,0 +1,328 @@
+%===============================================================
+% Universidade Tecnológica Federal do Paraná
+% Departamento Acadêmico de Eletrônica
+% Departamento Acadêmico de Informática
+% Engenharia de Computação
+% Oficina de Integração 3 (IF66J)
+% Modelo e instruções para a elaboração dos
+% relatórios técnicos da disciplina IF66J
+% Autores: Gustavo B. Borba e Guilherme A. Schneider
+% Versão: 05.abr.2015
+%===============================================================
+
+% Preâmbulo
+
+% http://easylatek.blogs.sapo.pt/3034.html [---
+\documentclass[a4paper,11pt]{article}
+\usepackage[portuguese]{babel}
+% Para Windows
+\usepackage[latin1]{inputenc} %substituir 'latin1' por 'utf8' para editores ShareLaTex ou Overleaf
+\usepackage[T1]{fontenc}
+% Para Linux
+% \usepackage[utf8]{inputenc}
+% Para Mac
+% \usepackage[applemac]{inputenc}
+% ---]
+% Packages [---
+\usepackage{fancyhdr} %para copeçalho e rodapé
+\usepackage{fancybox} %para copeçalho e rodapé
+\pagestyle{fancy} %para copeçalho e rodapé
+\usepackage{easylist} %para aninhar enumerate
+\usepackage{paralist} %para compactenum
+\usepackage{pbox} %para parbox
+\usepackage[hyphens]{url}  %para url com line break
+\usepackage{multirow} %para multirow e multicolumn
+\usepackage{array, hhline} %mais opcoes para o ambiente tabular
+\usepackage{fourier} %symbols
+\usepackage{ifsym} %symbols
+\usepackage{graphicx} %para inserir jpg e png e pdf
+% ---]
+
+% Cria hyperlinks e estrutura de tópicos para navegar em um pdf reader [---
+% Não alterar
+\usepackage[pdftex]{hyperref}
+\usepackage{color}
+\definecolor{corlinkprint}{rgb}{0, 0, 0}
+\hypersetup{
+  colorlinks,
+  citecolor   = corlinkprint,
+  filecolor   = corlinkprint,
+  linkcolor   = corlinkprint,
+  urlcolor    = corlinkprint}
+% ---]
+
+% Cabeçalho e rodapé a partir da página 2 [---
+% Substituir 'Modelo' pelo nome do projeto (nome de uma palavra usado na disciplina)
+\fancyhead[L]{\small{Wall-e}}
+\fancyhead[R]{\small\thepage} 
+\fancyfoot{}
+\renewcommand\headrulewidth{0.4pt}
+% ---]
+
+% Título [---
+% Substituir 'Modelo...' pelo título do relatório
+\title{
+Relatório Técnico\\
+\textbf{Wall-e}}
+% ---]
+
+% Autores [---
+% Substituir pelos nomes e emails dos integrantes
+\author{
+Felipe Ukan Pereira 1 \footnotesize{-- felipe.ukan@gmail.com}\\
+Hudo Cim Assenço 2 \footnotesize{-- hudo.assenco@gmail.com}\\
+Rodrigo L. Guimarães 3 \footnotesize{-- rolongui@yahoo.com.br}\\
+André L. Zanellato 4 \footnotesize{-- andre.zanellato@gmail.com}\\
+}
+% ---]
+
+% Substituir pelo mes e ano da defesa [---
+\date{julho de 2015}
+% ---]
+
+\begin{document}
+
+% Cabeçalho da página 1 [---
+% Não alterar
+\thisfancyput(35mm,-10mm){
+\begin{tabular}{c}
+Universidade Tecnológica Federal do Paraná -- \small{UTFPR}\\
+Departamento Acadêmico de Eletrônica -- \small{DAELN}\\
+Departamento Acadêmico de Informática -- \small{DAINF}\\
+Engenharia de Computação\\
+Oficina de Integração 3 (IF66J) -- S71 -- 2015/1 \\
+\\
+\hline
+\end{tabular}}
+% ---]
+
+% Insere título, autores e data [---
+\maketitle
+% ---]
+
+% Resumo [---
+% Sustituir pelo seu resumo
+\begin{abstract}
+\noindent O resumo deve ter entre 150 e 200 palavras. Apesar de breve, deve fornecer uma visão completa do trabalho. Por isso, é importante mencionar, pelo menos: a motivação para a realização do trabalho, a abordagem para a solução do problema e os resultados obtidos. Recomenda-se redigí-lo somente após finalizar todo o documento. Veja em \cite{Koopman97} uma descrição mais detalhada do conteúdo esperado em um bom resumo. Quanto à forma, utiliza-se um único parágrafo, acrônimos apenas se realmente necessários e nenhuma referência bibliográfica. Logo, eu não poderia ter incluído aqui o \cite{Koopman97}, mas esse é o momento de apresentá-lo. Além disso, este resumo não é necessariamente um resumo, mas sim um breve guia para a elaboração de um resumo. Se fosse um resumo, estaria apresentando o modelo. Por exemplo: \dots relatórios técnicos são instrumentos importantes para a comunicação de coisa e tal. Este documento apresenta um modelo para coisa e tal da disciplina Oficina de Integração 3. O editor de texto utilizado é o \LaTeX ~e a classe de documento adotada é a \textit{article}, recomendada para coisa e tal\dots. Além do título e autores, o resumo também costuma ser utilizado para a indexação do documento nas bases de dados. Portanto, é um recurso valioso para o leitor conhecer e julgar o seu trabalho.
+\end{abstract}
+% ---]
+
+%===============================================================
+% Corpo do texto [---
+% Substituir pelo seu relatório
+
+\section{Introdução}
+\label{sec:intro}
+
+%http://cs.brown.edu/about/system/software/latex/doc/fancybox.pdf
+\setlength{\fboxsep}{10pt}
+\begin{center}
+\fbox{
+\begin{minipage}{11.8cm}
+\begin{center}
+\LARGE\danger\\
+\smallskip
+\footnotesize{Conteúdos obrigatórios do relatório técnico: 1) figura com a visão geral do projeto; 2) requisitos (sugestão: inserir ambos na seção Introdução); 3) tabela com os custos do projeto (sugestão: inserir na seção Resultados).}
+\end{center}
+\end{minipage}}
+\end{center}
+
+\noindent
+A introdução deve abordar estes três grandes aspectos do projeto: \textbf{o quê}, \textbf{porquê} e \textbf{como}. Lembre-se também de mantê-la interessante e de leitura agradável e que não é obrigatório criar subseções (como metodologia).
+
+\section{Estrutura}
+\label{sec:estrut}
+
+A estrutura também é chamada de `esqueleto' do relatório. Recomenda-se que a estrutura completa, ou uma estimativa dela, seja a primeira etapa do processo de elaboração do relatório. Com excessão da \textit{introdução} e da \textit{conclusão}, não é obrigatório adotar a estrutura tradicional, que utiliza seções chamadas de \textit{fundamentação teórica} e \textit{desenvolvimento}. É claro que deve existir conteúdo referente a isso, mas não necessariamente com estes nomes. O mesmo vale para a seção \textit{resultados} (apesar de ser um pouco estranho um relatório técnico sem uma seção \textit{resultados}). Veja, por exemplo, como os três artigos a seguir foram organizados.\\
+\\
+\noindent
+\textit{Integrating hardware and software for the development of microcontroller-based systems} \cite{Dhaher01}, 12 páginas, citado 35 vezes \cite{GScholar14}. Se estivesse no formato deste modelo teria umas 26 páginas.
+\begin{compactenum}
+  \item Introduction
+  \item Laboratory facilities
+  \begin{compactenum}
+    \item Hardware
+    \item Software
+  \end{compactenum}
+  \item Course structure
+  \item Teaching laboratory
+  \begin{compactenum}
+    \item LAB 1: introduction to the development environment
+    \item LAB 2: structured assembly language programming
+    \item LAB 3: hardware interfacing
+    \item LAB 4: parallel I/O
+    \item LAB 5: interrupt and interrupt handling
+  \end{compactenum}
+  \item Project laboratories
+  \begin{compactenum}
+    \item Line tracking robot
+    \item Infrared communication project
+  \end{compactenum}
+  \item Student reactions and difficulties
+  \item Future expansion
+  \item Conclusion
+\end{compactenum}
+\vspace{\baselineskip} 
+
+\noindent
+\textit{Towards fully autonomous driving: systems and algorithms} \cite{Levinson11}, 6 páginas, citado 75 vezes \cite{GScholar14}. Se estivesse no formato deste modelo teria umas 14 páginas.
+\begin{compactenum}
+  \item Introduction
+  \item System and vehicle
+  \begin{compactenum}
+    \item Hardware
+    \item Software
+  \end{compactenum}
+  \item Unsupervised laser calibration
+  \item Mapping and localization
+  \item Object recognition
+  \item Trajectory planning  
+  \item Dynamical modeling and control  
+  \item Traffic light detection  
+  \item Generic sign detection and direction-invariant stop sign classification
+  \item Conclusion
+\end{compactenum}
+\vspace{\baselineskip} 
+
+Em \cite{CardiffFYPR11} há boas sugestões de estruturas e outras dicas para a elaboração de um trabalho de conclusão de curso (final year project). Apesar de tratar-se de um guia para a elaboração de um relatório mais extenso, pode fornecer idéias para você criar a estrutura mais adequada para este seu relatório técnico.\\
+
+\section{Redação}
+\label{sec:redac}
+
+Dicas interessantes:\\
+
+\begin{compactitem}
+\item Prefira períodos curtos (frases curtas). 
+\item Em textos técnico-científicos, recomenda-se o uso da terceira pessoa. Por exemplo, ao invés de escrever \textit{soldamos as peças}, prefira \textit{as peças foram soldadas}.
+\item Apesar de não ser um texto para leigos, muitas vezes o leitor não possui o mesmo embasamento teórico e técnico que você. Use o bom senso e a sua experiência para decidir que pontos requerem descrições mais detalhadas, e em quais deles descrições superficiais são suficientes.
+\item Palavras estrangeiras provavelmente estarão bastante presentes em um relatório técnico de engenharia. Embora muitas destas palavras já estejam presentes no nosso dia-a-dia, na hora de colocá-las no papel, especialmente em um texto formal, é necessário adotar o itálico.
+\end{compactitem}
+
+\section{Figuras, tabelas e equações}
+\label{sec:fte}
+
+A seguir é apresentado um exemplo envolvendo equação, tabela e figura.\\
+
+\noindent
+``Na \textit{notação posicional}, um numeral inteiro de base $b$ qualquer pode ser convertido para a base $10$, conforme
+
+\begin{equation}\label{eq:posicional}
+S_{[10]} = \sum_{p=0}^{n}a_p b^p,
+\end{equation}
+
+\noindent
+onde $a$ é o algarismo e $p$ é a posição do algarismo dentro do numeral a ser convertido, sendo $p=0$ para o algarismo mais da direita, denominado \textit{menos significativo} (para as definições de número, numeral e algarismo, veja \cite{JFPSilveira11}).''\\
+
+\noindent
+Outra opção seria:\\
+
+``Na \textit{notação posicional}, um numeral inteiro de base $b$ qualquer pode ser convertido para a base $10$ conforme a Equação \ref{eq:posicional}, onde $a$ é o algarismo e $p$ é a posição do algarismo dentro do numeral a ser convertido. $p=0$ para o algarismo mais da direita, denominado\dots.''
+
+Para equações diretamente no corpo do parágrafo, junto com o texto, utilize o recurso de equações inline do \LaTeX. ~Uma das maneiras de se fazer isso é colocando a equação e/ou seus elementos dentro de \verb|$$|. Por exemplo:\\
+
+\noindent
+\verb|$y=x+c$, onde $c$ é uma constante|, resulta em:\\
+\noindent
+$y=x+c$, onde $c$ é uma constante.\\
+
+\noindent
+Continuando com o exemplo:\\
+
+\noindent
+``A Tabela \ref{tab:simbolos} apresenta os símbolos adotados em sistemas numéricos de diferentes bases $b$. O sistema numérico \textit{decimal} (base 10) tem sua origem no fato de possuirmos 10 dedos nas mãos. A Figura \ref{fig:bases} mostra exemplos de seres vivos que utilizam os sistemas numéricos da Tabela \ref{tab:simbolos}. Observe que os golfinhos (Figura \ref{fig:bases}(d)) usam o sistema numérico \textit{binário}, o mesmo dos computadores.'' 
+
+\begin{table}[h]
+\caption{\small{Símbolos adotados em sistemas numéricos de diferentes bases $b$.}}
+\begin{center}
+\begin{tabular}{l|c|c}
+\hline
+$b$ & Nome & Símbolos \\
+\hline
+10 & decimal & 0,1,2,3,4,5,6,7,8,9 \\
+8 & octal & 0,1,2,3,4,5,6,7  \\
+4 & quaternário & 0,1,2,3 \\
+2 & binário & 0,1 \\
+\hline
+\end{tabular}
+\end{center}
+\label{tab:simbolos}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{cccc}
+  \includegraphics[width=2.8cm]{./images/SistNumSeres_base10_3.png} &
+  \includegraphics[width=2.8cm]{./images/SistNumSeres_base8_3.png} &
+  \includegraphics[width=2.8cm]{./images/SistNumSeres_base4_3.png} &
+  \includegraphics[width=2.8cm]{./images/SistNumSeres_base2_3.png} \\
+ (a) & (b) & (c) & (d)
+\end{tabular}
+\caption{\small{Exemplos de seres vivos que utilizam sistemas numéricos de diferentes bases. (a) humanos: base 10, (b) Simpsons: base 8, (c) caranguejos: base 4 e (d) golfinhos: base 2.}}
+\label{fig:bases}
+\end{figure}
+
+Não tente brigar com o \LaTeX ~para posicionar as figuras e tabelas onde você acha melhor, deixe que ele distribua e relaxe. As chamadas são feitas facilmente utilizando-se os comandos \verb|\label{meuLabel}| dentro do ambiente da figura, tabela ou equação e \verb|\ref{meuLabel}| no texto. Não altere o tamanho (\verb|\small|) da fonte das legendas do modelo \texttt{tex}. 
+
+Tabelas mais sofisticadas podem às vezes ser um pouco chatas de se fazer no \LaTeX, ~mas depois de pegar o jeito fica fácil. A Tabela \ref{tab:titulos} apresenta o número de títulos em diferentes campeonatos de times de futebol do Cazaquistão \footnote{Claro que a tabela é fake. Isto é uma nota de rodapé, obtida com o comando \texttt{\textbackslash footnote\{Meu texto aqui.\}} } . Observe que ela utiliza o recurso de `mesclar células' (termo usado pelo editor MS Word), obtido no \LaTeX ~a partir dos comandos \verb|\multirow| ~e \verb|\multicolumn|.
+
+\begin{table}[h]
+\caption{\small{Número de títulos em campeonatos nacionais e internacionais dos times mais populares do Cazaquistão.}}
+\begin{center}
+\begin{tabular}{l|l|c|c|c|c}
+\hline
+\multirow{2}{*}{Divisão} & \multirow{2}{*}{Time} & \multicolumn{2}{c|}{Camp. Nacional} & \multicolumn{2}{c}{Camp. Internacional}\\
+\cline{3-6}
+{} & {} & Copa do Rei & Brasileirão & Libertadores & Champions\\
+\hhline{======}
+\multirow{2}{*}{$1^a$}   & Águias & 12 & 2 & 0 & 0 \\
+                         & KZAQs & 7 & 1 & 1 & 0 \\
+\hline
+$2^a$ & Powers & $\pi$ & $\sqrt{2}$ & 0 & 1 \\
+\hline                         
+\end{tabular}
+\end{center}
+\label{tab:titulos}
+\end{table}
+
+\section{Professor, quantas páginas?}
+\label{sec:npaginas}
+
+Regras para o relatório técnico da IF66J:
+
+\begin{compactitem}
+\item Mínimo de 3500 e máximo de 6000 palavras, contadas a partir do arquivo pdf, utilizando uma das ferramentas a seguir.
+  \begin{compactitem}
+    \item Translator's Abacus (free):\\
+		\url{http://www.globalrendering.com/download.html}
+    \item WordCounter online word counter:\\
+		\url{http://www.docwordcounter.com/}
+    \item Count On It online word counter:\\
+		\url{http://felix-cat.com/tools/wordcount/} (talvez pdf limitado em 1 MB)
+  \end{compactitem}
+Não é possível afirmar que estas ferramentas apresentam contagens exatas, mas é o suficiente para as nossas necessidades. Ainda, as contagens de cada ferramenta não são idênticas. Este pdf por exemplo, segundo o Translator's Abacus possui 4534 palavras e segundo o WordCounter, 4433 palavras.  Adote aquela da sua preferência ou, se for necessário, aquela que resulta em uma contagem mais conveniente para a sua situação.
+\item Mínimo de 10 e máximo de 15 páginas.
+\item Mínimo de 4 figuras. 
+\item Mínimo de 10 referências.
+ \end{compactitem}
+ 
+\section{Conclusão}
+\label{sec:conc}
+
+Outros nomes possíveis para esta seção são \textit{Considerações finais} ou \textit{Conclusões} (no plural). Deve apresentar um panorama geral do projeto com ênfase no que foi atingido, mencionando-se os principais objetivos, seus resultados e o que foi aprendido \cite{CardiffFYPR11}. Seja objetivo e mantenha o foco nos aspectos técnicos, de preferência incluindo dados quantitativos. Costuma-se também apresentar sugestões de \textit{trabalhos futuros}, isto é, o que pode ser feito para a continuidade do projeto.
+
+O relatório será avaliado pelos professores da disciplina e por uma banca e conta pontos importantes. Lembre que a banca não acompanhou a execução do projeto. Na maioria dos casos, é por meio do relatório que acontece o primeiro contato dos julgadores com o seu trabalho. Portanto, é essencial deixar uma boa impressão e valorizar o seu projeto. Um bom trabalho pode facilmente ser ofuscado por um relatório pobre ou descuidado.
+
+A versão final deste documento permanecerá à disposição das pessoas. É exclusivamente através dele que o seu trabalho será julgado por aqueles que não viram o protótipo ou não acompanharam a defesa. O objetivo é que o relatório sirva como uma fonte de pesquisa, referência ou inspiração para pessoas interessadas na área do seu projeto, ou até mesmo em reproduzí-lo ou aperfeiçoá-lo.
+
+Por fim, tenha em mente que a prioridade é a qualidade do relatório e não a sua extensão, isto é, qualidade e não quantidade. Ao mesmo tempo, não deve ser muito curto, comprometendo a \textbf{completude}. Bom senso sempre e bom trabalho!
+ 
+\section*{Agradecimentos}
+ 
+Esta seção é opcional. Mencione colegas, parentes, professores, fornecedores, chineses `craqueadores' de softwares ou quaisquer outras pessoas/entidades, humanas ou não, a quem você queira manifestar sua gratidão. Observe que esta seção não é numerada (comando \verb|\section*{Agradecimentos}|).
+
+%Insere referencias [---
+\bibliographystyle{alpha}
+\bibliography{IF66J} % Substituir pelo seu arquivo bib
+
+\end{document}
+

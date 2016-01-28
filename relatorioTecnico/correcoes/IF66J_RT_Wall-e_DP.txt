@@ -1,0 +1,18 @@
+Daniel R. Pipa
+
+(PODIAMOS ARRUMAR ISSO NO RELATÓRIO)
+Para cima e pra baixo, para os lados
+Pan, Tilt
+
+Arduíno é só pra GPS, Giroscópio e Acelerômetro?
+Figura, slide 6, parece que tem 2 Netbooks? Um em cima do robô e outro fora?
+
+Navegação autônoma
+Mapeamento 3D
+Escopo muito amplo, não foi possível se aprofundar
+
+octree
+wavelets
+representação multi-resolução
+
+RODRIGO - COMENTÁRIOS: Talvez poderíamos mudar de para cima/para baixo para pan e tilt no relatório em alguns lugares mesmo. O resto é tudo baboseira.

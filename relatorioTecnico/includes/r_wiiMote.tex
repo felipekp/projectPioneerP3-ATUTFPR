@@ -1,0 +1,17 @@
+Foram verificadas todas as principais funcionalidades deste sistema e, assim, feitos ajustes empíricos que resultaram em um melhor desempenho no controle do robô e do Kinect conforme descrito abaixo:
+
+\begin{compactitem}
+\item Quando o controle e o computador se conectam (pareiam), ele vibra. Empiricamente, ajustamos a vibração para uma duração que possa ser percebida, mas que não seja desconfortável.
+\item Assim que o controle liga, nenhum LED está aceso, e ele se encontra na velocidade 0. Nesse estado, não é possível mover o robô, independente de como o Wiimote é movimentado.
+\item Os botões \verb|+| e \verb|-| do Wiimote são responsáveis por trocar entre as velocidades 0 e 4. Esta funcionalidade foi extensivamente testada e em nenhum caso \textit{bugs} foram detectados, sendo que todos os LEDs acendiam corretamente e percebia-se a mudança de velocidade entre os estágios.
+\item Nos estados de velocidade 1 a 4, o robô se move proporcionalmente à inclinação do Wiimote. Ajustamos os fatores multiplicativos de cada nível de velocidade de forma a buscar uma curva de aceleração que permita um bom controle do robô em todos os estágios, além de haver uma clara mudança de velocidade entre os estágios.
+\item O botão \verb|B| é responsável por frear o robô instantaneamente e colocá-lo no estado de velocidade 0, independente de sua configuração atual do robô. Testamos essa funcionalidade nos mais diversos cenários e não encontramos nenhum problema.
+\item As setas direcionais para cima e para baixo são responsáveis por regular o ângulo vertical do Kinect. Em princípio, esse controle era bem difícil de ser obtido e o Kinect continuava se movendo por bastante tempo após o botão ter sido liberado. Fizemos alguns ajustes no código e testamos abordagens diferentes para a publicação do ângulo do Kinect para o pacote \verb|kinect_aux|, chegando no atual, que se mostrou a melhor forma de controle.
+\item As setas direcionais para esquerda e direita são responsáveis por regular o ângulo horizontal do Kinect. Esse controle também não atuou como esperávamos, principalmente em função da demora da transmissão dos dados do Wiimote para o Arduino e pela imprecisão no posicionamento do servo. Não era possível mover o motor de maneira contínua, sendo que este apresentava saltos discretos entre posições vizinhas, as duas abordagens que apresentaram melhores resultados foram:
+\begin{compactitem}
+\item Quando um botão direcional for pressionado, enviar para o Arduino um comando com o lado para o qual deve girar e, quando o botão for solto, mandar um comando de parada. Dessa forma, o atraso não é tão perceptível e o Arduino consegue lidar com passos discretos bastante pequenos (suficientes para não serem notados).
+\item Dividir o percurso total do servo motor em poucos passos discretos, que podem ser escolhidos com cliques nos direcionais, ou seja, um toque para a esquerda resulta em um único movimento de X graus. Nossa preferência foi usar X igual a 10 graus, fazendo com que o servo-motor tivesse 13 passos em seus 120º totais de percurso.
+\end{compactitem} 
+\end{compactitem}
+
+A versão atual do \textit{software} do Wiimote apresenta todas as funcionalidades propostas: movimentar o Kinect nos eixos vertical e horizontal, movimentar o robô e adicionalmente incluimos duas funções: \textit{sweep}, que percorre continuamente os 120 graus possíveis do servo motor e \textit{home} que movimenta o Kinect para o centro (Kinect direcionado para frente).

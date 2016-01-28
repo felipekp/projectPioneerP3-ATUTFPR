@@ -1,0 +1,38 @@
+%Muitas aplicações em robótica necessitam de um mapeamento 3D, como visualização de obstáculos e digitalização do estado atual de algum ambiente. 
+%PRECISA MESMO DESSA FRASE GENÉRICA AQUI?
+O uso do \textit{framework} OctoMap possibilita a geração de modelos tridimensionais de ambientes com a nuvem de pontos gerada pelo Kinect.
+
+Primeiramente foi feito o estudo do código e da documentação do OctoMap. Este \textit{framework} utiliza \textit{octrees}, uma estrutura de dados que permite um melhor uso de recursos como tempo de acesso a memória e tamanho ocupado. Uma \textit{octree} é uma estrutura de dados organizada de forma hierárquica para divisão espacial em 3 dimensões \cite{Wilhelms:1992:Octotrees}\cite{Meagher:1981:Octotrees}. Em uma \textit{octree}, cada espaço é recursivamente dividido em 8 subespaços de mesmo tamanho, até que a densidade de informações por espaço seja a desejada ou se alcance o tamanho mínimo para um espaço. No contexto do OctoMap, cada espaço (também chamado de voxel) apresenta três estados: ocupado, livre e desconhecido.
+
+Para determinar o estado de cada voxel é utilizado a nuvem de pontos gerada pelo Kinect. Voxels ocupados são todos aqueles que possuem pontos em seu interior. Voxels livres são aqueles que não possuem pontos em seu interior e estão entre um voxel ocupado e o sensor. Estes voxels são determinados utilizando um algoritmo de \textit{raycasting} \cite{hornung13auro}. 
+
+O \textit{raycasting} basicamente consiste em traçar um segmento de reta entre o sensor e o voxel ocupado, percorrendo todos os espaços que a reta intersecciona. É neste algoritmo que a estrutura de dados empregada pelo \textit{framework} possui maior importância. Caso os espaços não tivessem nenhuma relação entre si, todos estes deveriam ser testados para determinar se uma interseção ocorreu ou não e esta operação teria um custo de \textbf{O(n)}. No entanto, uma \textit{octree} possui organização hieráquica e apenas um subconjunto dos espaços são testados, resultando em um custo de \textbf{O(log n) }\cite{Havran2000:PhD}.
+
+Entendido o princípio de funcionamento, instalamos o pacote do OctoMap e os \textit{plugins} do \verb|rviz| (sistema de visualização do ROS) para que pudéssemos conferir os resultados. O pacote acompanha um lançador (\textit{launcher}) de demonstração, então antes mesmo de testá-lo, foi criado um lançador em XML que inicializa todas as funções necessárias para seu funcionamento. Esse \textit{launcher} é responsável inicialmente por:
+
+\begin{compactitem}
+\item Ligar os \textit{drivers} do Kinect e estabelecer sua comunicação com o ROS.
+\item Criar a transformação espacial do sensor Kinect em relação ao centro do robô, referência necessária para o octomap conseguir criar a visualização 3D a partir dos dados.
+\item Inicializar o lançador de demonstração do OctoMap.
+\end{compactitem}  
+
+Além de criar esse lançador básico, é necessário modificar parâmetros do lançador do OctoMap. São eles:
+
+\begin{compactitem}
+\item \textit{Frame} (sistema de coordenadas) de referência fixo, em relação ao qual o OctoMap irá montar os dados. Como não usávamos um sistema de localização no mapa, foi utilizada como referência a odometria do robô.
+\item Tópico pelo qual a nuvem de pontos pode ser obtida.
+\end{compactitem} 
+
+Em seguida fizemos o lançamento do nosso XML e obtivemos resultados positivos. Fazendo a visualização no \verb|rviz|, o resultado do OctoMap estava dentro do esperado. Em seguida, para a integração do OctoMap com a movimentação do robô e para fazer os dados da visualização acompanhá-los, foram necessárias outras alterações no \textit{launcher}:
+
+\begin{compactitem}
+\item Inserção dos nós de comunicação com a base móvel, responsáveis por ligar o robô e interpretar comandos de velocidade.
+\item Inserção do nó de comunicação com o Wiimote.
+\item Inserção do nó \verb|wii_oficinas_node|, desenvolvido pela equipe para o controle do Kinect e do robô a partir dos comandos do Wiimote.
+\item Inserção do nó de comunicação do Arduino com o \textit{netbook}, para receber comandos de movimentação horizontal do Kinect.
+\item Inserção do nó \verb|kinect_aux|, responsável pela movimentação vertical do Kinect. 
+\end{compactitem} 
+
+Essas modificações foram suficientes para um mapeamento razoável e eficiente do ambiente enquanto o robô era teleoperado com o Wiimote. Os resultados são apresentados e discutidos na seção \ref{sec:result:octomap} (página \pageref{sec:result:octomap}).
+
+%IMPORTANTE: NÃO CITEI NADA DE QUE O OCTOMAP NÃO FUNCIONA SE MEXER O KINECT, MAS SABEMOS QUE, NO ESTADO ATUAL, NÃO FUNCIONA!

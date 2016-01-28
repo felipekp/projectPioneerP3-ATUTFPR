@@ -1,0 +1,197 @@
+%===============================================================
+% Universidade Tecnológica Federal do Paraná
+% Departamento Acadêmico de Eletrônica
+% Departamento Acadêmico de Informática
+% Engenharia de Computação
+% Oficina de Integração 3 (IF66J)
+% Modelo e instruções para a elaboração dos
+% relatórios técnicos da disciplina IF66J
+% Autores: Gustavo B. Borba e Guilherme A. Schneider
+% Versão: 05.abr.2015
+%===============================================================
+
+% Preâmbulo
+
+% http://easylatek.blogs.sapo.pt/3034.html [---
+\documentclass[a4paper,11pt]{article}
+\usepackage[portuguese]{babel}
+% Para Windows
+\usepackage[utf8]{inputenc} %substituir 'latin1' por 'utf8' para editores ShareLaTex ou Overleaf
+\usepackage[T1]{fontenc}
+% Para Linux
+% \usepackage[utf8]{inputenc}
+% Para Mac
+% \usepackage[applemac]{inputenc}
+% ---]
+% Packages [---
+\usepackage{fancyhdr} %para copeçalho e rodapé
+\usepackage{fancybox} %para copeçalho e rodapé
+\pagestyle{fancy} %para copeçalho e rodapé
+\usepackage{easylist} %para aninhar enumerate
+\usepackage{paralist} %para compactenum
+\usepackage{pbox} %para parbox
+\usepackage[hyphens]{url}  %para url com line break
+\usepackage{multirow} %para multirow e multicolumn
+\usepackage{array, hhline} %mais opcoes para o ambiente tabular
+\usepackage{fourier} %symbols
+\usepackage{ifsym} %symbols
+\usepackage{graphicx} %para inserir jpg e png e pdf
+\usepackage{float}
+\usepackage{pdfpages}
+% ---]
+
+% Cria hyperlinks e estrutura de tópicos para navegar em um pdf reader [---
+% Não alterar
+\usepackage{hyperref}
+\usepackage{color}
+\definecolor{corlinkprint}{rgb}{0, 0, 0}
+\hypersetup{
+  colorlinks,
+  citecolor   = corlinkprint,
+  filecolor   = corlinkprint,
+  linkcolor   = corlinkprint,
+  urlcolor    = corlinkprint}
+% ---]
+
+% Cabeçalho e rodapé a partir da página 2 [---
+% Substituir 'Modelo' pelo nome do projeto (nome de uma palavra usado na disciplina)
+\fancyhead[L]{\small{Relatório Técnico: Wall-e}}
+\fancyhead[R]{\small\thepage} 
+\fancyfoot{}
+\renewcommand\headrulewidth{0.4pt}
+% ---]
+
+% Título [---
+% Substituir 'Modelo...' pelo título do relatório
+\title{
+Relatório Técnico\\
+\textbf{Wall-e: navegação autônoma baseada em mapas de custo, teleoperação e mapeamento 3D.}}
+% ---]
+
+% Autores [---
+% Substituir pelos nomes e emails dos integrantes
+\author{
+Felipe Ukan Pereira \footnotesize{-- felipe.ukan@gmail.com}\\
+Hudo Cim Assenço \footnotesize{-- hudo.assenco@gmail.com}\\
+Rodrigo Longui Guimarães \footnotesize{-- rolongui@yahoo.com.br}\\
+André Lucas Zanellato \footnotesize{-- andre.zanellato@gmail.com}\\
+}
+% ---]
+
+% Substituir pelo mes e ano da defesa [---
+\date{julho de 2015}
+% ---]
+
+\begin{document}
+
+% Cabeçalho da página 1 [---
+% Não alterar
+\thisfancyput(35mm,-10mm){
+\begin{tabular}{c}
+Universidade Tecnológica Federal do Paraná -- \small{UTFPR}\\
+Departamento Acadêmico de Eletrônica -- \small{DAELN}\\
+Departamento Acadêmico de Informática -- \small{DAINF}\\
+Engenharia de Computação\\
+Oficina de Integração 3 (IF66J) -- S71 -- 2015/1 \\
+\\
+\hline
+\end{tabular}}
+% ---]
+
+% Insere título, autores e data [---
+\maketitle
+% ---]
+
+% Resumo [---
+% Sustituir pelo seu resumo
+\begin{abstract}
+\noindent Este projeto foi iniciado por um dos integrantes da equipe durante a sua iniciação científica, cujo objetivo principal é a preparação de um robô Pioneer 3-AT para a integração de um \textit{framework} de inteligência artificial baseado em agentes LIDA. Esse projeto foi modificado e passou a cumprir algumas provas da categoria @Home da Robocup. No presente trabalho, desenvolvido durante a disciplina IF66J, foram desenvolvidas várias melhorias que, entre outras funções, ajudarão na realização de ainda mais provas da categoria @Home da Robocup. Essas melhorias são: desenvolvimento de uma interface com o Wiimote para a teleoperação do robô, obtenção de uma visualização 3D do ambiente fazendo uso de um Kinect e do pacote de \textit{software} \verb|octomap| do \textit{framework} Robot Operating System (ROS), movimentação do Kinect usando um servo motor, incorporação de um sensor de ultrasom (sonar) para aprimoramento da navegação autônoma e integração com o \textit{framework} \textit{Simultaneous Localization and Mapping}, e publicação dos dados dos sensores giroscópio, acelerômetro e GPS via Arduino ao ROS. A comunicação sem fio entre os componentes mencionados ocorre via \textit{Wi-Fi} ou \textit{bluetooth}. O gerenciamento é realizado por um \textit{netbook} acoplado ao robô, com o auxílio de um Arduino para a aquisição dos dados dos sensores. Os resultados obtidos mostram que os objetivos foram alcançados e o robô é capaz de navegar de forma autônoma em um ambiente de testes.
+\end{abstract}
+% ---]
+
+%===============================================================
+% Corpo do texto [---
+% Substituir pelo seu relatório
+
+\section{Introdução}
+\label{sec:intro}
+
+	\input{includes/introducao.tex}
+
+\section{Desenvolvimento}
+\label{sec:desenv}
+
+	\subsection{Teleoperação com o Wiimote}
+	\label{sec:desenv:wiiMote}
+	
+		\input{includes/d_wiiMote.tex}
+		
+	\subsection{Interface com Arduino}
+	\label{sec:desenv:arduino}
+	
+		\input{includes/d_arduino.tex}
+		
+	\subsection{Base para o Kinect}
+	\label{sec:desenv:baseKinect}
+	
+		\input{includes/d_baseKinect.tex}
+	
+	\subsection{Visualização 3D com OctoMap}
+	\label{sec:desenv:octomap}
+		
+		\input{includes/d_octomap.tex}
+	
+	\subsection{Navegação autônoma}
+	\label{sec:desenv:slam}
+	
+		\input{includes/d_slam.tex}
+
+\section{Resultados e discussões}
+\label{sec:result}
+
+	\subsection{Teleoperação com o Wiimote}
+	\label{sec:result:wiiMote}
+	
+		\input{includes/r_wiiMote.tex}
+		
+	\subsection{Sensores}
+	\label{sec:result:sensores}
+	
+		\input{includes/r_sensores.tex}	
+	
+	\subsection{Movimentação do Kinect}
+	\label{sec:result:movKinect}
+	
+		\input{includes/r_movKinect.tex}	
+	
+	\subsection{Visualização 3D com OctoMap}
+	\label{sec:result:octomap}
+		
+		\input{includes/r_octomap.tex}
+	
+	\subsection{Navegação autônoma}
+	\label{sec:result:slam}
+	
+		\input{includes/r_slam.tex}
+ 
+\section{Considerações finais}
+\label{sec:conc}
+
+\input{includes/conclusao.tex}
+
+%Insere referencias [---
+\bibliographystyle{alpha}
+\bibliography{IF66J} % Substituir pelo seu arquivo bib
+
+\section*{Apêndice}
+	\begin{figure}[h]
+	\centering
+  		\includegraphics[height=19cm]{images/wii_oficinas_node_flux.png} 
+		\caption{\small{Fluxograma representando o funcionamento geral do programa wii$\_$oficinas$\_$node, que se comunica com o controle Wiimote e controla o robô móvel de acordo com as mensagens que recebe. Note que as mensagens são atualizadas nas interrupções, conforme mostrado na Figura~\ref{fig:ints_wii}.}}
+		\label{fig:wii_oficinas_node_flux}
+	\end{figure}
+	
+	%juntar com o glossario.pdf que tenho lá, não da pra colocar input no .pdf porque ele não aceita...
+
+\end{document}
+
